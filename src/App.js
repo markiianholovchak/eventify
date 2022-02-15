@@ -1,5 +1,9 @@
 function App() {
-	return <div className="App">Hey there, Eventify!</div>;
+	return (
+		<div className="App">
+			<h1 className="text-3xl font-bold text-dark font-main">Hey there, !</h1>
+		</div>
+	);
 }
 
 export default App;
