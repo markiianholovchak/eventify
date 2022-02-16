@@ -15,6 +15,9 @@ module.exports = {
 		fontFamily: {
 			main: ["Nunito"],
 		},
+		backgroundImage: {
+			concert: "url('../public/img/concert-with-filter.jpeg')",
+		},
 	},
 	plugins: [],
 };
