@@ -1,7 +1,7 @@
 export default function Button({ type, text }) {
-	const primaryButtonStyles = "text-white bg-primary";
+	const primaryButtonStyles = "text-light bg-primary";
 	const secondaryButtonStyles =
-		"text-primary  hover:text-white hover:bg-primary ";
+		"text-primary  hover:text-light hover:bg-primary ";
 	return (
 		<a
 			href="/"
