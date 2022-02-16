@@ -1,7 +1,9 @@
 function App() {
 	return (
 		<div className="App">
-			<h1 className="text-3xl font-bold text-dark font-main">Hey there, !</h1>
+			<svg className="stroke-dark">
+				<use xlinkHref="/img/sprite.svg#icon-map" />
+			</svg>
 		</div>
 	);
 }
