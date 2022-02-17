@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Filter from "./Filter";
 
 export default function Searchbar() {
 	const [query, setQuery] = useState("");
@@ -64,36 +65,3 @@ export default function Searchbar() {
 		</form>
 	);
 }
-
-const Filter = ({ icon, title }) => {
-	const [isSelected, setIsSelected] = useState(false);
-	const handleSelect = () => {
-		setIsSelected(!isSelected);
-	};
-	return (
-		<div className="flex items-center cursor-pointer" onClick={handleSelect}>
-			<div className="p-2 bg-grey-100 rounded-full mr-2">
-				<svg className="h-4 w-4">
-					<use xlinkHref={`/img/sprite.svg#icon-${icon}`} />
-				</svg>
-			</div>
-
-			<div className="flex flex-col w-[6rem]">
-				<span
-					className={`text-base translate-x-0font-medium text-dark inline-block transition-all duration-300 ${
-						isSelected ? "" : "translate-y-[.6rem]"
-					}`}
-				>
-					{title}
-				</span>
-				<span
-					className={`text-grey-200 inline-block text-sm ${
-						isSelected ? "" : "opacity-0"
-					} `}
-				>
-					{isSelected ? "United States" : "None"}
-				</span>
-			</div>
-		</div>
-	);
-};
