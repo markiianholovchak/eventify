@@ -1,10 +1,11 @@
 import Logo from "./components/Logo";
 import Button from "./components/Button";
 import Searchbar from "./components/Searchbar";
+import Footer from "./components/Footer";
 function App() {
 	return (
 		<div className="font-main">
-			<header className="h-[60vh] sm:px-10 px-3 py-4 flex flex-col justify-between   bg-concert bg-cover bg-center ">
+			<header className="h-[60vh] sm:px-10 px-4 py-4 flex flex-col justify-between   bg-concert bg-cover bg-center ">
 				<div className="flex justify-between">
 					<Logo color="light" />
 					<Button type="primary" text="Log In" />
@@ -17,6 +18,7 @@ function App() {
 			<main className="sm:px-10 px-5 flex justify-center">
 				<Searchbar />
 			</main>
+			<Footer />
 		</div>
 	);
 }
