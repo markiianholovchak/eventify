@@ -4,6 +4,10 @@ import Filter from "./Filter";
 export default function Searchbar() {
 	const [query, setQuery] = useState("");
 	const [areFiltersVisible, setFiltersVisible] = useState(false);
+	const [country, setCountry] = useState("");
+	const [city, setCity] = useState("");
+	const [segment, setSegment] = useState("");
+	const [date, setDate] = useState("");
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 	};
@@ -43,10 +47,30 @@ export default function Searchbar() {
 						areFiltersVisible ? "" : "opacity-0"
 					}`}
 				>
-					<Filter icon="map" title="Country" />
-					<Filter icon="marker" title="City" />
-					<Filter icon="segments" title="Segment" />
-					<Filter icon="calendar" title="Date" />
+					<Filter
+						icon="map"
+						title="Country"
+						selectedOption={country}
+						setSelectedOption={setCountry}
+					/>
+					<Filter
+						icon="marker"
+						title="City"
+						selectedOption={city}
+						setSelectedOption={setCity}
+					/>
+					<Filter
+						icon="segments"
+						title="Segment"
+						selectedOption={segment}
+						setSelectedOption={setSegment}
+					/>
+					<Filter
+						icon="calendar"
+						title="Date"
+						selectedOption={date}
+						setSelectedOption={setDate}
+					/>
 				</div>
 				<div
 					className={`text-grey-200 font-light text-md flex items-center transition-all duration-300 cursor-pointer mt-4  ${

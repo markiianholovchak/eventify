@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 
-export default function Select({ options, handleSelect }) {
+export default function Select({ options, handleSelect, setIsVisible }) {
 	const [query, setQuery] = useState("");
 
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 	};
-
+	const ref = useRef(null);
+	useClickOutside(ref, () => {
+		setIsVisible(false);
+	});
 	return (
-		<div className={`bg-light shadow-lg rounded-lg p-3`}>
+		<div
+			className={`bg-light shadow-lg rounded-lg p-3 absolute top-0 left-0 z-20`}
+			ref={ref}
+		>
 			<div className="bg-grey-100 rounded-lg flex items-center px-3 py-1 ">
 				<svg className="fill-grey-200 h-3 w-3 mr-2">
 					<use xlinkHref="/img/sprite.svg#icon-search" />

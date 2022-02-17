@@ -1,14 +1,15 @@
 import { useState } from "react";
-import useVisible from "../hooks/useVisible";
 import Select from "./Select";
 
-export default function Filter({ icon, title }) {
-	const [isSelected, setIsSelected] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("");
-	const { ref, isVisible, setIsVisible } = useVisible(true);
+export default function Filter({
+	icon,
+	title,
+	selectedOption,
+	setSelectedOption,
+}) {
+	const [isVisible, setIsVisible] = useState(false);
 	const handleSelect = (e) => {
 		setSelectedOption(e.target.textContent);
-		setIsSelected(true);
 		setIsVisible(false);
 	};
 	return (
@@ -26,28 +27,27 @@ export default function Filter({ icon, title }) {
 				<div className="flex flex-col w-[6rem]">
 					<span
 						className={`text-base translate-x-0font-medium text-dark inline-block transition-all duration-300 ${
-							isSelected ? "" : "translate-y-[.6rem]"
+							selectedOption ? "" : "translate-y-[.6rem]"
 						}`}
 					>
 						{title}
 					</span>
 					<span
 						className={`text-grey-200 inline-block text-sm ${
-							isSelected ? "" : "opacity-0"
+							selectedOption ? "" : "opacity-0"
 						} `}
 					>
-						{isSelected ? selectedOption : "None"}
+						{selectedOption ? selectedOption : "None"}
 					</span>
 				</div>
 			</div>
 
 			{isVisible && (
-				<div className="absolute top-0 left-0 z-20" ref={ref}>
-					<Select
-						options={["US", "Canada", "Mexico", "Spain", "Rome", "England"]}
-						handleSelect={handleSelect}
-					/>
-				</div>
+				<Select
+					options={["US", "Canada", "Mexico", "Spain", "Rome", "England"]}
+					handleSelect={handleSelect}
+					setIsVisible={setIsVisible}
+				/>
 			)}
 		</div>
 	);
