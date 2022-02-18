@@ -11,12 +11,15 @@ module.exports = {
 				},
 				light: "#ffffff",
 			},
-		},
-		fontFamily: {
-			main: ["Nunito"],
-		},
-		backgroundImage: {
-			concert: "url('../public/img/concert-with-filter.jpeg')",
+			fontFamily: {
+				main: ["Nunito"],
+			},
+			backgroundImage: {
+				concert: "url('../public/img/concert-with-filter.jpeg')",
+			},
+			gridTemplateColumns: {
+				autofit: "repeat(auto-fit, minmax(20rem, 1fr))",
+			},
 		},
 	},
 	plugins: [],

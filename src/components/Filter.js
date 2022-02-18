@@ -4,6 +4,7 @@ import Select from "./Select";
 export default function Filter({
 	icon,
 	title,
+	selectOptions,
 	selectedOption,
 	setSelectedOption,
 }) {
@@ -44,7 +45,7 @@ export default function Filter({
 
 			{isVisible && (
 				<Select
-					options={["US", "Canada", "Mexico", "Spain", "Rome", "England"]}
+					options={selectOptions}
 					handleSelect={handleSelect}
 					setIsVisible={setIsVisible}
 				/>

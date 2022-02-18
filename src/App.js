@@ -13,16 +13,37 @@ function App() {
 				</div>
 				<h1 className="lg:text-5xl sm:text-4xl text-3xl text-center self-center lg:mb-20 mb-14 font-bold text-light">
 					Discover thousands of <br />{" "}
-					<span className="text-primary">events</span> all over US!
+					<span className="text-primary">events</span> all over the world!
 				</h1>
 			</header>
-			<main className="sm:px-10 px-5 ">
+			<main className="sm:px-10 px-5 -translate-y-8 ">
 				<div className="flex justify-center">
 					<Searchbar />
 				</div>
-				<h2 className="lg:text-3xl sm:text-2xl text-xl">Explore events</h2>
-				<div className="mt-2 mb-10">
-					<Card />
+				<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+					Explore events
+				</h2>
+				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					<Card type="event" />
+					<Card type="event" />
+					<Card type="event" />
+				</div>
+				<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+					Explore venues
+				</h2>
+				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					<Card type="venue" />
+					<Card type="venue" />
+					<Card type="venue" />
+				</div>
+
+				<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+					Explore attractions
+				</h2>
+				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					<Card type="attraction" />
+					<Card type="attraction" />
+					<Card type="attraction" />
 				</div>
 			</main>
 			<Footer />

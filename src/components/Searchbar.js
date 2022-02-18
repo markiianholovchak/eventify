@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Filter from "./Filter";
+import { countryCodes, segments } from "../globals";
 
 export default function Searchbar() {
 	const [query, setQuery] = useState("");
@@ -20,7 +21,7 @@ export default function Searchbar() {
 	};
 	return (
 		<form
-			className="-translate-y-8 w-full flex flex-col items-center"
+			className=" w-full flex flex-col items-center"
 			onSubmit={(e) => handleFormSubmit(e)}
 		>
 			<div className="flex items-center shadow-xl rounded-xl xl:w-[50%] sm:w-[75%] w-[85%] ">
@@ -43,31 +44,29 @@ export default function Searchbar() {
 			</div>
 			<div className="mt-9 flex flex-col items-center">
 				<div
-					className={`grid sm:grid-cols-4 grid-cols-1 gap-2 transition-all duration-300 ${
+					className={`grid sm:grid-cols-3 grid-cols-1 gap-2 transition-all duration-300 ${
 						areFiltersVisible ? "" : "opacity-0"
 					}`}
 				>
 					<Filter
 						icon="map"
 						title="Country"
+						selectOptions={Object.values(countryCodes)}
 						selectedOption={country}
 						setSelectedOption={setCountry}
 					/>
-					<Filter
-						icon="marker"
-						title="City"
-						selectedOption={city}
-						setSelectedOption={setCity}
-					/>
+
 					<Filter
 						icon="segments"
 						title="Segment"
+						selectOptions={Object.keys(segments)}
 						selectedOption={segment}
 						setSelectedOption={setSegment}
 					/>
 					<Filter
 						icon="calendar"
 						title="Date"
+						selectOptions={["us"]}
 						selectedOption={date}
 						setSelectedOption={setDate}
 					/>
