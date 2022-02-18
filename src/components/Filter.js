@@ -19,7 +19,7 @@ export default function Filter({
 				onClick={() => setIsVisible(true)}
 			>
 				<div className="p-2 bg-grey-100 rounded-full mr-2">
-					<svg className="h-4 w-4">
+					<svg className="h-4 w-4 ">
 						<use xlinkHref={`/img/sprite.svg#icon-${icon}`} />
 					</svg>
 				</div>

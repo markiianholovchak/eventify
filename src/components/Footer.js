@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 export default function Footer() {
 	return (
-		<footer className="sm:px-5 px-2">
+		<footer className="sm:px-5 px-2 mb-4">
 			<div className="flex justify-between items-center border-b-2 border-b-gray-200 pb-1 sm:px-5 px-2">
 				<Logo color="dark" />
 				<ul className="text-dark text-base font-semibold grid grid-cols-3 gap-4">

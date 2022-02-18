@@ -26,11 +26,21 @@
 <path d="M1.66663 8.33331H18.3333" stroke="#344055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 
+<symbol id="icon-calendar-light" fill="none" viewBox="0 0 20 20">
+<path d="M15 3.33331H4.99996C3.15901 3.33331 1.66663 4.8257 1.66663 6.66665V15C1.66663 16.8409 3.15901 18.3333 4.99996 18.3333H15C16.8409 18.3333 18.3333 16.8409 18.3333 15V6.66665C18.3333 4.8257 16.8409 3.33331 15 3.33331Z" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.66663 1.66666V4.99999" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.3333 1.66666V4.99999" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1.66663 8.33331H18.3333" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
 <symbol id="icon-up" fill="none" viewBox="0 0 20 20">
 <path d="M16.6666 12.5L9.99996 5.83333L3.3333 12.5" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 </defs>
 </svg>
+
+
+
 
 
 

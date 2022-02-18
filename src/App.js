@@ -2,6 +2,7 @@ import Logo from "./components/Logo";
 import Button from "./components/Button";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
+import Card from "./components/Card";
 function App() {
 	return (
 		<div className="font-main">
@@ -15,8 +16,14 @@ function App() {
 					<span className="text-primary">events</span> all over US!
 				</h1>
 			</header>
-			<main className="sm:px-10 px-5 flex justify-center">
-				<Searchbar />
+			<main className="sm:px-10 px-5 ">
+				<div className="flex justify-center">
+					<Searchbar />
+				</div>
+				<h2 className="lg:text-3xl sm:text-2xl text-xl">Explore events</h2>
+				<div className="mt-2 mb-10">
+					<Card />
+				</div>
 			</main>
 			<Footer />
 		</div>
