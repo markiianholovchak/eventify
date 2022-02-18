@@ -6,7 +6,6 @@ export default function Searchbar() {
 	const [query, setQuery] = useState("");
 	const [areFiltersVisible, setFiltersVisible] = useState(false);
 	const [country, setCountry] = useState("");
-	const [city, setCity] = useState("");
 	const [segment, setSegment] = useState("");
 	const [date, setDate] = useState("");
 	const handleInputChange = (e) => {
