@@ -10,7 +10,9 @@ export default function Filter({
 }) {
 	const [isVisible, setIsVisible] = useState(false);
 	const handleSelect = (e) => {
-		setSelectedOption(e.target.textContent);
+		setSelectedOption(
+			e.target.textContent !== "None" ? e.target.textContent : null
+		);
 		setIsVisible(false);
 	};
 	return (
@@ -35,10 +37,18 @@ export default function Filter({
 					</span>
 					<span
 						className={`text-grey-200 inline-block text-sm ${
-							selectedOption ? "" : "opacity-0"
+							selectedOption ? "" : "opacity-1"
 						} `}
 					>
-						{selectedOption ? selectedOption : "None"}
+						{selectedOption ? (
+							selectedOption.length > 12 ? (
+								selectedOption.slice(0, 12) + "..."
+							) : (
+								selectedOption
+							)
+						) : (
+							<span>&nbsp;</span>
+						)}
 					</span>
 				</div>
 			</div>

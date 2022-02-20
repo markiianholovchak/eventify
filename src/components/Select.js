@@ -28,23 +28,36 @@ export default function Select({ options, handleSelect, setIsVisible }) {
 					value={query}
 				/>
 			</div>
-			<ul className="text-sm mt-4 h-40 overflow-scroll">
-				{options
-					.filter((option) =>
-						option.toLowerCase().includes(query.toLowerCase())
-					)
-					.map((option, index) => {
-						return (
-							<li
-								key={index}
-								className="text-dark border-b-2 border-b-grey-100 mt-2 cursor-pointer transition-all duration-200 hover:border-b-primary hover:text-primary"
-								onClick={(e) => handleSelect(e)}
-							>
-								{option}
-							</li>
-						);
-					})}
-			</ul>
+			{options ? (
+				<ul className="text-sm mt-4 h-40 overflow-scroll">
+					<li
+						className="text-dark border-b-2 border-b-grey-100 mt-2 cursor-pointer transition-all duration-200 hover:border-b-primary hover:text-primary"
+						onClick={(e) => handleSelect(e)}
+					>
+						None
+					</li>
+
+					{options
+						.filter((option) =>
+							option.toLowerCase().includes(query.toLowerCase())
+						)
+						.map((option, index) => {
+							return (
+								<li
+									key={index}
+									className="text-dark border-b-2 border-b-grey-100 mt-2 cursor-pointer transition-all duration-200 hover:border-b-primary hover:text-primary"
+									onClick={(e) => handleSelect(e)}
+								>
+									{option}
+								</li>
+							);
+						})}
+				</ul>
+			) : (
+				<span className="text-xs mt-4 text-grey-200">
+					Please, select a segment first
+				</span>
+			)}
 		</div>
 	);
 }

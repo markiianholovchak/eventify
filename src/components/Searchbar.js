@@ -7,6 +7,7 @@ export default function Searchbar() {
 	const [areFiltersVisible, setFiltersVisible] = useState(false);
 	const [country, setCountry] = useState("");
 	const [segment, setSegment] = useState("");
+	const [genre, setGenre] = useState("");
 	const [date, setDate] = useState("");
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
@@ -43,7 +44,7 @@ export default function Searchbar() {
 			</div>
 			<div className="mt-9 flex flex-col items-center">
 				<div
-					className={`grid sm:grid-cols-3 grid-cols-1 gap-2 transition-all duration-300 ${
+					className={`grid sm:grid-cols-4 grid-cols-1 gap-2 transition-all duration-300 ${
 						areFiltersVisible ? "" : "opacity-0"
 					}`}
 				>
@@ -62,6 +63,17 @@ export default function Searchbar() {
 						selectedOption={segment}
 						setSelectedOption={setSegment}
 					/>
+
+					<Filter
+						icon="segments"
+						title="Genres"
+						selectOptions={
+							segment ? Object.keys(segments[segment].genres) : null
+						}
+						selectedOption={genre}
+						setSelectedOption={setGenre}
+					/>
+
 					<Filter
 						icon="calendar"
 						title="Date"
