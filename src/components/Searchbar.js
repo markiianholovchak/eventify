@@ -90,7 +90,9 @@ export default function Searchbar() {
 				>
 					{areFiltersVisible ? "Hide" : "Show"} filters
 					<svg
-						className={`h-4 w-4 ml-1 ${areFiltersVisible ? "" : "rotate-180"}`}
+						className={`h-4 w-4 ml-1 stroke-grey-200 ${
+							areFiltersVisible ? "" : "rotate-180"
+						}`}
 					>
 						<use xlinkHref="/img/sprite.svg#icon-up" />
 					</svg>

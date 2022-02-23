@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
+import DatePicker from "./components/DatePicker";
 function App() {
 	return (
 		<div className="font-main">
@@ -24,27 +25,28 @@ function App() {
 					Explore events
 				</h2>
 				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					{/* <Card type="event" />
 					<Card type="event" />
-					<Card type="event" />
-					<Card type="event" />
+					<Card type="event" /> */}
 				</div>
 				<h2 className="sm:text-2xl text-xl font-semibold text-dark">
 					Explore venues
 				</h2>
 				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					{/* <Card type="venue" />
 					<Card type="venue" />
-					<Card type="venue" />
-					<Card type="venue" />
+					<Card type="venue" /> */}
 				</div>
 
 				<h2 className="sm:text-2xl text-xl font-semibold text-dark">
 					Explore attractions
 				</h2>
 				<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+					{/* <Card type="attraction" />
 					<Card type="attraction" />
-					<Card type="attraction" />
-					<Card type="attraction" />
+					<Card type="attraction" /> */}
 				</div>
+				<DatePicker />
 			</main>
 			<Footer />
 		</div>

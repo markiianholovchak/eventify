@@ -34,7 +34,7 @@
 </symbol>
 
 <symbol id="icon-up" fill="none" viewBox="0 0 20 20">
-<path d="M16.6666 12.5L9.99996 5.83333L3.3333 12.5" stroke="#B8C0D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.6666 12.5L9.99996 5.83333L3.3333 12.5" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 </defs>
 </svg>
