@@ -1,0 +1,96 @@
+import useFetch from "../hooks/useFetch";
+import Card from "../components/Card";
+import Loader from "../components/Loader";
+
+import { APIKEY } from "../globals";
+function Home() {
+	const randomPage = Math.floor(Math.random() * 25);
+	const [events, areEventsLoading, eventsErr] = useFetch(
+		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&locale=*&page=${randomPage}`
+	);
+	const [venues, areVenuesLoading, venuesErr] = useFetch(
+		`https://app.ticketmaster.com/discovery/v2/venues?apikey=${APIKEY}&locale=*&page=${randomPage}`
+	);
+	const [attractions, areAttractionsLoading, attractionsErr] = useFetch(
+		`https://app.ticketmaster.com/discovery/v2/attractions?apikey=${APIKEY}&locale=*&page=${randomPage}`
+	);
+
+	return (
+		<>
+			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+				Explore events
+			</h2>
+			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+				{areEventsLoading && <Loader />}
+				{eventsErr && <span>Oops... something went wrong: {eventsErr}</span>}
+				{events &&
+					events.slice(0, 5).map((event) => {
+						return (
+							<Card
+								key={event.id}
+								type="event"
+								name={event.name}
+								location={`${event._embedded.venues[0].city.name}, ${
+									event._embedded.venues[0].country.name.length > 10
+										? event._embedded.venues[0].country.countryCode
+										: event._embedded.venues[0].country.name
+								}`}
+								image={event.images?.[0]?.url}
+								date={event.dates.start.localDate}
+								segment={event.classifications[0].segment.name}
+							/>
+						);
+					})}
+			</div>
+			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+				Explore venues
+			</h2>
+			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+				{areVenuesLoading && <Loader />}
+				{venuesErr && <span>Oops... something went wrong: {venuesErr}</span>}
+				{venues &&
+					venues.slice(0, 5).map((venue) => {
+						return (
+							<Card
+								key={venue.id}
+								type="venue"
+								name={venue.name}
+								location={`${venue.city.name}, ${
+									venue.country.name.length > 10
+										? venue.country.countryCode
+										: venue.country.name
+								}`}
+								image={venue.images?.[0]?.url}
+								upcoming={venue.upcomingEvents._total}
+							/>
+						);
+					})}
+			</div>
+
+			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+				Explore attractions
+			</h2>
+			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
+				{areAttractionsLoading && <Loader />}
+				{attractionsErr && (
+					<span>Oops... something went wrong: {attractionsErr}</span>
+				)}
+				{attractions &&
+					attractions.slice(0, 5).map((attraction) => {
+						return (
+							<Card
+								key={attraction.id}
+								type="attraction"
+								name={attraction.name}
+								image={attraction.images?.[0]?.url}
+								upcoming={attraction.upcomingEvents._total}
+								segment={`${attraction.classifications[0].segment.name}, ${attraction.classifications[0].genre?.name}`}
+							/>
+						);
+					})}
+			</div>
+		</>
+	);
+}
+
+export default Home;
