@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "./Select";
+import DatePicker from "./DatePicker";
 
 export default function Filter({
 	icon,
@@ -53,11 +54,18 @@ export default function Filter({
 				</div>
 			</div>
 
-			{isVisible && (
+			{isVisible && title !== "Date" && (
 				<Select
 					options={selectOptions}
 					handleSelect={handleSelect}
 					setIsVisible={setIsVisible}
+				/>
+			)}
+			{isVisible && title === "Date" && (
+				<DatePicker
+					setIsVisible={setIsVisible}
+					selectedOption={selectedOption}
+					handleSelect={setSelectedOption}
 				/>
 			)}
 		</div>

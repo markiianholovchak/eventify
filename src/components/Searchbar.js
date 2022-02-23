@@ -77,7 +77,6 @@ export default function Searchbar() {
 					<Filter
 						icon="calendar"
 						title="Date"
-						selectOptions={["us"]}
 						selectedOption={date}
 						setSelectedOption={setDate}
 					/>

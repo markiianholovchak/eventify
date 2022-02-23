@@ -46,7 +46,6 @@ function App() {
 					<Card type="attraction" />
 					<Card type="attraction" /> */}
 				</div>
-				<DatePicker />
 			</main>
 			<Footer />
 		</div>
