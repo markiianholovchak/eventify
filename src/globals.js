@@ -1,3 +1,5 @@
+export const APIKEY = "kCSU9cv9rugE2DgYkgiPL2p9knRgeJWw";
+
 export const countryCodes = {
 	US: "United States",
 	AD: "Andorra",
