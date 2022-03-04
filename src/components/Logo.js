@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
+
 function Logo({ color }) {
 	return (
-		<div
+		<Link
+			to="/"
 			className={`text-3xl font-bold text-${
 				color === "dark" ? "dark" : "light"
 			} h-max`}
 		>
 			Event<span className="text-primary">ify</span>
-		</div>
+		</Link>
 	);
 }
 

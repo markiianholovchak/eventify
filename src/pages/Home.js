@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 import useFetch from "../hooks/useFetch";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
 import { APIKEY } from "../globals";
+
 function Home() {
 	const randomPage = Math.floor(Math.random() * 25);
 	const [events, areEventsLoading, eventsErr] = useFetch(
@@ -17,9 +20,15 @@ function Home() {
 
 	return (
 		<>
-			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+			<Link
+				to="/explore/events"
+				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
+			>
 				Explore events
-			</h2>
+				<svg className="stroke-dark h-6 w-6 ml-2">
+					<use xlinkHref="/img/sprite.svg#icon-rarrow" />
+				</svg>
+			</Link>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areEventsLoading && <Loader />}
 				{eventsErr && <span>Oops... something went wrong: {eventsErr}</span>}
@@ -42,9 +51,15 @@ function Home() {
 						);
 					})}
 			</div>
-			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+			<Link
+				to="/venues"
+				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
+			>
 				Explore venues
-			</h2>
+				<svg className="stroke-dark h-6 w-6 ml-2">
+					<use xlinkHref="/img/sprite.svg#icon-rarrow" />
+				</svg>
+			</Link>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areVenuesLoading && <Loader />}
 				{venuesErr && <span>Oops... something went wrong: {venuesErr}</span>}
@@ -67,9 +82,15 @@ function Home() {
 					})}
 			</div>
 
-			<h2 className="sm:text-2xl text-xl font-semibold text-dark">
+			<Link
+				to="/attractions"
+				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
+			>
 				Explore attractions
-			</h2>
+				<svg className="stroke-dark h-6 w-6 ml-2">
+					<use xlinkHref="/img/sprite.svg#icon-rarrow" />
+				</svg>
+			</Link>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areAttractionsLoading && <Loader />}
 				{attractionsErr && (
