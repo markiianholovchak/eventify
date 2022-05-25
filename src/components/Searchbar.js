@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Filter from "./Filter";
 import { countryCodes, segments } from "../globals";
 
@@ -11,14 +11,29 @@ export default function Searchbar() {
 	const [genre, setGenre] = useState("");
 	const [date, setDate] = useState("");
 	const navigate = useNavigate();
+
+	const [searchParams, setSearchParams] = useSearchParams();
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 	};
 	const handleFormSubmit = (e) => {
 		// Go to search page
+		e.preventDefault();
 		const queryKeyword = query.split(" ").join("%20");
 		const query1 = `keyword${queryKeyword}`;
-		navigate(`/events/keyword=${queryKeyword}`);
+		const queryObj = {
+			keyword: query.split(" ").join("%20"),
+			countryCode: Object.keys(countryCodes).find(
+				(countryCode) => countryCodes[countryCode] === country
+			),
+			segmentName: segment,
+			genreId: segments[segment]?.genres[genre],
+			date: date,
+		};
+		const queryStrg = Object.keys(queryObj).reduce((acc, el) => {
+			return acc + (queryObj[el] ? `${el}=${queryObj[el]}&` : "");
+		}, "");
+		navigate(`/events/?${queryStrg}`);
 	};
 	const handleShowFilters = () => {
 		setFiltersVisible(!areFiltersVisible);
