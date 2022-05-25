@@ -28,7 +28,6 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/:type" element={<ExploreMore />} />
-						<Route path="/:type/" element={<ExploreMore />} />
 					</Routes>
 				</main>
 				<Footer />

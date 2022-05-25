@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import { countryCodes, segments } from "../globals";
 
@@ -12,15 +12,12 @@ export default function Searchbar() {
 	const [date, setDate] = useState("");
 	const navigate = useNavigate();
 
-	const [searchParams, setSearchParams] = useSearchParams();
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 	};
 	const handleFormSubmit = (e) => {
 		// Go to search page
 		e.preventDefault();
-		const queryKeyword = query.split(" ").join("%20");
-		const query1 = `keyword${queryKeyword}`;
 		const queryObj = {
 			keyword: query.split(" ").join("%20"),
 			countryCode: Object.keys(countryCodes).find(
