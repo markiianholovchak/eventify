@@ -52,7 +52,7 @@ function Home() {
 					})}
 			</div>
 			<Link
-				to="/venues"
+				to="/explore/venues"
 				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
 			>
 				Explore venues
@@ -83,7 +83,7 @@ function Home() {
 			</div>
 
 			<Link
-				to="/attractions"
+				to="/explore/attractions"
 				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
 			>
 				Explore attractions

@@ -19,7 +19,7 @@ export default function Footer() {
 				</ul>
 			</div>
 			<div className="text-dark font-extralight text-sm flex justify-center mt-2">
-				Copyright 2021 by Eventify | All rights reserved
+				&copy; {new Date().getFullYear()} by Eventify | All rights reserved
 			</div>
 		</footer>
 	);
