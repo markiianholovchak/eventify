@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 import Card from "../components/Card";
@@ -10,8 +10,10 @@ import { APIKEY } from "../globals";
 
 export default function ExploreMore() {
 	const params = useParams();
-	const cardType = Object.values(params)[0].slice(0, -1);
-	const [pages, setPages] = useState([30]);
+	const cardType = params.type.slice(0, -1);
+	const location = useLocation();
+	const searchParams = location.pathname.split("/")[2] || "";
+	const [pages, setPages] = useState([1]);
 	const [totalPages, setTotalPages] = useState(null);
 	const handleLoadPage = (e) => {
 		e.preventDefault();
@@ -20,11 +22,18 @@ export default function ExploreMore() {
 	return (
 		<div className="">
 			<h2 className="sm:text-2xl text-xl font-semibold text-dark flex items-center">
-				Explore {cardType + "s"}
+				{params.query
+					? `Results for: ${params.query}`
+					: `Explore ${params.type}`}
 			</h2>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{pages.map((page, index) => (
-					<DataPage pageToLoad={page} cardType={cardType} key={index} />
+					<DataPage
+						pageToLoad={page}
+						cardType={cardType}
+						key={index}
+						searchParams={searchParams}
+					/>
 				))}
 			</div>
 			<div className="flex justify-center">
@@ -42,9 +51,12 @@ export default function ExploreMore() {
 	);
 }
 
-const DataPage = ({ pageToLoad, cardType, totalPages, setTotalPages }) => {
+const DataPage = ({ pageToLoad, cardType, searchParams }) => {
 	const [data, isDataLoading, dataErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&locale=*&page=${pageToLoad}`
+		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&${searchParams}&locale=*&page=${pageToLoad}`
+	);
+	console.log(
+		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&${searchParams}&locale=*&page=${pageToLoad}`
 	);
 	return (
 		<>

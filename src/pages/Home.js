@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import { APIKEY } from "../globals";
 
 function Home() {
-	const randomPage = Math.floor(Math.random() * 25);
+	const randomPage = Math.floor(Math.random() * 15);
 	const [events, areEventsLoading, eventsErr] = useFetch(
 		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&locale=*&page=${randomPage}`
 	);
@@ -21,7 +21,7 @@ function Home() {
 	return (
 		<>
 			<Link
-				to="/explore/events"
+				to="/events"
 				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
 			>
 				Explore events
@@ -54,7 +54,7 @@ function Home() {
 						})}
 			</div>
 			<Link
-				to="/explore/venues"
+				to="/venues"
 				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
 			>
 				Explore venues
@@ -87,7 +87,7 @@ function Home() {
 			</div>
 
 			<Link
-				to="/explore/attractions"
+				to="/attractions"
 				className="sm:text-2xl text-xl font-semibold text-dark flex items-center"
 			>
 				Explore attractions

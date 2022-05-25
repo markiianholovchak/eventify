@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import { countryCodes, segments } from "../globals";
 
@@ -9,12 +10,15 @@ export default function Searchbar() {
 	const [segment, setSegment] = useState("");
 	const [genre, setGenre] = useState("");
 	const [date, setDate] = useState("");
+	const navigate = useNavigate();
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
 	};
 	const handleFormSubmit = (e) => {
-		e.preventDefault();
 		// Go to search page
+		const queryKeyword = query.split(" ").join("%20");
+		const query1 = `keyword${queryKeyword}`;
+		navigate(`/events/keyword=${queryKeyword}`);
 	};
 	const handleShowFilters = () => {
 		setFiltersVisible(!areFiltersVisible);
