@@ -33,23 +33,25 @@ function Home() {
 				{areEventsLoading && <Loader />}
 				{eventsErr && <span>Oops... something went wrong: {eventsErr}</span>}
 				{events &&
-					events.slice(0, 5).map((event) => {
-						return (
-							<Card
-								key={event.id}
-								type="event"
-								name={event.name}
-								location={`${event._embedded.venues[0].city.name}, ${
-									event._embedded.venues[0].country.name.length > 10
-										? event._embedded.venues[0].country.countryCode
-										: event._embedded.venues[0].country.name
-								}`}
-								image={event.images?.[0]?.url}
-								date={event.dates.start.localDate}
-								segment={event.classifications[0].segment.name}
-							/>
-						);
-					})}
+					Object.values(events._embedded)[0]
+						.slice(0, 5)
+						.map((event) => {
+							return (
+								<Card
+									key={event.id}
+									type="event"
+									name={event.name}
+									location={`${event._embedded.venues[0].city.name}, ${
+										event._embedded.venues[0].country.name.length > 10
+											? event._embedded.venues[0].country.countryCode
+											: event._embedded.venues[0].country.name
+									}`}
+									image={event.images?.[0]?.url}
+									date={event.dates.start.localDate}
+									segment={event.classifications[0].segment.name}
+								/>
+							);
+						})}
 			</div>
 			<Link
 				to="/explore/venues"
@@ -64,22 +66,24 @@ function Home() {
 				{areVenuesLoading && <Loader />}
 				{venuesErr && <span>Oops... something went wrong: {venuesErr}</span>}
 				{venues &&
-					venues.slice(0, 5).map((venue) => {
-						return (
-							<Card
-								key={venue.id}
-								type="venue"
-								name={venue.name}
-								location={`${venue.city.name}, ${
-									venue.country.name.length > 10
-										? venue.country.countryCode
-										: venue.country.name
-								}`}
-								image={venue.images?.[0]?.url}
-								upcoming={venue.upcomingEvents._total}
-							/>
-						);
-					})}
+					Object.values(venues._embedded)[0]
+						.slice(0, 5)
+						.map((venue) => {
+							return (
+								<Card
+									key={venue.id}
+									type="venue"
+									name={venue.name}
+									location={`${venue.city.name}, ${
+										venue.country.name.length > 10
+											? venue.country.countryCode
+											: venue.country.name
+									}`}
+									image={venue.images?.[0]?.url}
+									upcoming={venue.upcomingEvents._total}
+								/>
+							);
+						})}
 			</div>
 
 			<Link
@@ -97,18 +101,20 @@ function Home() {
 					<span>Oops... something went wrong: {attractionsErr}</span>
 				)}
 				{attractions &&
-					attractions.slice(0, 5).map((attraction) => {
-						return (
-							<Card
-								key={attraction.id}
-								type="attraction"
-								name={attraction.name}
-								image={attraction.images?.[0]?.url}
-								upcoming={attraction.upcomingEvents._total}
-								segment={`${attraction.classifications[0].segment.name}, ${attraction.classifications[0].genre?.name}`}
-							/>
-						);
-					})}
+					Object.values(attractions._embedded)[0]
+						.slice(0, 5)
+						.map((attraction) => {
+							return (
+								<Card
+									key={attraction.id}
+									type="attraction"
+									name={attraction.name}
+									image={attraction.images?.[0]?.url}
+									upcoming={attraction.upcomingEvents._total}
+									segment={`${attraction.classifications[0].segment.name}, ${attraction.classifications[0].genre?.name}`}
+								/>
+							);
+						})}
 			</div>
 		</>
 	);

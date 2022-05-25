@@ -1,4 +1,10 @@
-export default function Button({ type, text }) {
+export default function Button({
+	type,
+	text,
+	onClick = (e) => {
+		e.preventDefault();
+	},
+}) {
 	const primaryButtonStyles = "text-light bg-primary";
 	const secondaryButtonStyles =
 		"text-primary  hover:text-light hover:bg-primary ";
@@ -8,7 +14,7 @@ export default function Button({ type, text }) {
 			className={`text-lg  font-semibold inline-block  px-8 py-1 rounded-md border-2 border-primary ${
 				type === "primary" ? primaryButtonStyles : secondaryButtonStyles
 			} transition-all duration-200 active:scale-95 h-max`}
-			onClick={(e) => e.preventDefault()}
+			onClick={onClick}
 		>
 			{text}
 		</a>
