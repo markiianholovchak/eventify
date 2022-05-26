@@ -14,7 +14,7 @@ import { APIKEY } from "../globals";
 export default function ExploreMore() {
 	const [pages, setPages] = useState([1]);
 	const [totalPages, setTotalPages] = useState(1);
-	const [searchParams, setSearchParams] = useCustomSearchParams();
+	const [searchParams] = useCustomSearchParams();
 	const params = useParams();
 
 	const querySearchParams = Object.keys(searchParams).reduce(
@@ -27,10 +27,6 @@ export default function ExploreMore() {
 		setPages([...pages, pages[pages.length - 1] + 1]);
 	};
 
-	useEffect(() => {
-		setPages([1]);
-		console.log("fired");
-	}, [querySearchParams]);
 	return (
 		<div className="">
 			<h2 className="sm:text-2xl text-xl font-semibold text-dark flex items-center">
@@ -78,7 +74,7 @@ const DataPage = ({
 		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&${searchParams}locale=*&page=${pageToLoad}`
 	);
 	useEffect(() => {
-		if (data && totalPages < data.page.totalPages) {
+		if (data && data.page.totalPages !== 1 && totalPages === 1) {
 			setTotalPages(data.page.totalPages);
 		}
 	}, [data]);

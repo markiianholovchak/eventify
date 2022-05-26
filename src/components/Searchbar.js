@@ -4,12 +4,12 @@ import Filter from "./Filter";
 import { countryCodes, segments } from "../globals";
 
 export default function Searchbar() {
-	const [keyword, setKeyword] = useState("");
 	const [areFiltersVisible, setAreFiltersVisible] = useState(false);
+	const [keyword, setKeyword] = useState("");
+	const [type, setType] = useState("Events");
 	const [country, setCountry] = useState("");
 	const [segment, setSegment] = useState("");
 	const [genre, setGenre] = useState("");
-	const [type, setType] = useState("Events");
 	const navigate = useNavigate();
 
 	const handleInputChange = (e) => {

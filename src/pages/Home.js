@@ -39,6 +39,7 @@ function Home() {
 							return (
 								<Card
 									key={event.id}
+									id={event.id}
 									type="event"
 									name={event.name}
 									location={`${event._embedded.venues[0].city.name}, ${
@@ -72,6 +73,7 @@ function Home() {
 							return (
 								<Card
 									key={venue.id}
+									id={venue.id}
 									type="venue"
 									name={venue.name}
 									location={`${venue.city.name}, ${
@@ -107,6 +109,7 @@ function Home() {
 							return (
 								<Card
 									key={attraction.id}
+									id={attraction.id}
 									type="attraction"
 									name={attraction.name}
 									image={attraction.images?.[0]?.url}

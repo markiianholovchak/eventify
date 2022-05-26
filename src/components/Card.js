@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 /**
  *
@@ -7,6 +8,7 @@ import React from "react";
  * @returns card component
  */
 export default function Card({
+	id,
 	type,
 	name,
 	location,
@@ -52,13 +54,12 @@ export default function Card({
 						</div>
 					</div>
 
-					<a
-						className="text-sm text-primary bg-grey-100 px-3 py-1 rounded-2xl self-end justify-self-end active:scale-95"
-						href="/"
-						onClick={(e) => e.preventDefault()}
+					<Link
+						className="text-sm text-primary bg-grey-100 px-3 py-1 rounded-2xl self-end justify-self-end hover:scale-110 active:scale-95 transition-all duration-200"
+						to={`/${type}/${id}`}
 					>
 						Learn more
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
