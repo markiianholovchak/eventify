@@ -5,7 +5,7 @@ import Button from "./components/Button";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import ExploreMore from "./pages/ExploreMore";
+import Search from "./pages/Search";
 
 function App() {
 	return (
@@ -27,7 +27,7 @@ function App() {
 					</div>
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/:type" element={<ExploreMore />} />
+						<Route path="/:type" element={<Search />} />
 					</Routes>
 				</main>
 				<Footer />

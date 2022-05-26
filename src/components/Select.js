@@ -1,7 +1,12 @@
 import { useState, useRef } from "react";
 import useClickOutside from "../hooks/useClickOutside";
 
-export default function Select({ options, handleSelect, setIsVisible }) {
+export default function Select({
+	required,
+	options,
+	handleSelect,
+	setIsVisible,
+}) {
 	const [query, setQuery] = useState("");
 
 	const handleInputChange = (e) => {
@@ -30,12 +35,14 @@ export default function Select({ options, handleSelect, setIsVisible }) {
 			</div>
 			{options ? (
 				<ul className="text-sm mt-4 h-40 overflow-scroll">
-					<li
-						className="text-dark border-b-2 border-b-grey-100 mt-2 cursor-pointer transition-all duration-200 hover:border-b-primary hover:text-primary"
-						onClick={(e) => handleSelect(e)}
-					>
-						None
-					</li>
+					{!required && (
+						<li
+							className="text-dark border-b-2 border-b-grey-100 mt-2 cursor-pointer transition-all duration-200 hover:border-b-primary hover:text-primary"
+							onClick={(e) => handleSelect(e)}
+						>
+							None
+						</li>
+					)}
 
 					{options
 						.filter((option) =>

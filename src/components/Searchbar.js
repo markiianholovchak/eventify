@@ -4,36 +4,39 @@ import Filter from "./Filter";
 import { countryCodes, segments } from "../globals";
 
 export default function Searchbar() {
-	const [query, setQuery] = useState("");
-	const [areFiltersVisible, setFiltersVisible] = useState(false);
+	const [keyword, setKeyword] = useState("");
+	const [areFiltersVisible, setAreFiltersVisible] = useState(false);
 	const [country, setCountry] = useState("");
 	const [segment, setSegment] = useState("");
 	const [genre, setGenre] = useState("");
-	const [date, setDate] = useState("");
+	const [type, setType] = useState("Events");
 	const navigate = useNavigate();
 
 	const handleInputChange = (e) => {
-		setQuery(e.target.value);
+		setKeyword(e.target.value);
 	};
 	const handleFormSubmit = (e) => {
-		// Go to search page
 		e.preventDefault();
+		// Create query string from selected filters
 		const queryObj = {
-			keyword: query.split(" ").join("%20"),
+			keyword: keyword.split(" ").join("%20"),
 			countryCode: Object.keys(countryCodes).find(
 				(countryCode) => countryCodes[countryCode] === country
 			),
 			segmentName: segment,
 			genreId: segments[segment]?.genres[genre],
-			date: date,
 		};
-		const queryStrg = Object.keys(queryObj).reduce((acc, el) => {
-			return acc + (queryObj[el] ? `${el}=${queryObj[el]}&` : "");
+		const queryStr = Object.keys(queryObj).reduce((acc, paramName) => {
+			return (
+				acc +
+				(queryObj[paramName] ? `${paramName}=${queryObj[paramName]}&` : "")
+			);
 		}, "");
-		navigate(`/events/?${queryStrg}`);
+		// Redirect to search page with the query
+		navigate(`/${type.toLowerCase()}/?${queryStr}`);
 	};
 	const handleShowFilters = () => {
-		setFiltersVisible(!areFiltersVisible);
+		setAreFiltersVisible(!areFiltersVisible);
 	};
 	return (
 		<form
@@ -45,7 +48,7 @@ export default function Searchbar() {
 					className="flex-1 py-3 px-5 rounded-tl-xl rounded-bl-xl outline-primary text-dark text-md"
 					type="text"
 					placeholder="An artist, event or venue"
-					value={query}
+					value={keyword}
 					onChange={(e) => handleInputChange(e)}
 				></input>
 				<button
@@ -64,6 +67,14 @@ export default function Searchbar() {
 						areFiltersVisible ? "" : "opacity-0"
 					}`}
 				>
+					<Filter
+						required={true}
+						icon="calendar"
+						title="Type"
+						selectedOption={type}
+						selectOptions={["Events", "Venues", "Attractions"]}
+						setSelectedOption={setType}
+					/>
 					<Filter
 						icon="map"
 						title="Country"
@@ -88,13 +99,6 @@ export default function Searchbar() {
 						}
 						selectedOption={genre}
 						setSelectedOption={setGenre}
-					/>
-
-					<Filter
-						icon="calendar"
-						title="Date"
-						selectedOption={date}
-						setSelectedOption={setDate}
 					/>
 				</div>
 				<div

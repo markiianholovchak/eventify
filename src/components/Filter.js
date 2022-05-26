@@ -3,6 +3,7 @@ import Select from "./Select";
 import DatePicker from "./DatePicker";
 
 export default function Filter({
+	required = false,
 	icon,
 	title,
 	selectOptions,
@@ -56,6 +57,7 @@ export default function Filter({
 
 			{isVisible && title !== "Date" && (
 				<Select
+					required={required}
 					options={selectOptions}
 					handleSelect={handleSelect}
 					setIsVisible={setIsVisible}
