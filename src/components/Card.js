@@ -19,12 +19,18 @@ export default function Card({
 }) {
 	return (
 		<div className="bg-white shadow-lg w-full rounded-xl overflow-hidden">
-			<div className=" h-[10rem]">
-				<img
-					className="w-full h-full object-cover object-center "
-					src={image}
-					alt={`${name} ${type}`}
-				/>
+			<div className=" h-[10rem] flex justify-center items-center">
+				{image ? (
+					<img
+						className="w-full h-full object-cover object-center "
+						src={image}
+						alt={`${name} ${type}`}
+					/>
+				) : (
+					<span className="text-primary text-lg font-semibold">
+						No photo for this {type}...
+					</span>
+				)}
 			</div>
 			<div className="px-3 py-3">
 				<h3 className="text-lg font-bold text-dark mr-2">

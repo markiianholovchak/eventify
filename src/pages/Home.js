@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 import { APIKEY } from "../globals";
 
@@ -31,7 +32,9 @@ function Home() {
 			</Link>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areEventsLoading && <Loader />}
-				{eventsErr && <span>Oops... something went wrong: {eventsErr}</span>}
+				{eventsErr && (
+					<Error errorMessage={`Oops... something went wrong: ${eventsErr}`} />
+				)}
 				{events &&
 					Object.values(events._embedded)[0]
 						.slice(0, 5)
@@ -65,7 +68,9 @@ function Home() {
 			</Link>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areVenuesLoading && <Loader />}
-				{venuesErr && <span>Oops... something went wrong: {venuesErr}</span>}
+				{venuesErr && (
+					<Error errorMessage={`Oops... something went wrong: ${venuesErr}`} />
+				)}
 				{venues &&
 					Object.values(venues._embedded)[0]
 						.slice(0, 5)
@@ -100,7 +105,9 @@ function Home() {
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
 				{areAttractionsLoading && <Loader />}
 				{attractionsErr && (
-					<span>Oops... something went wrong: {attractionsErr}</span>
+					<Error
+						errorMessage={`Oops... something went wrong: ${attractionsErr}`}
+					/>
 				)}
 				{attractions &&
 					Object.values(attractions._embedded)[0]
