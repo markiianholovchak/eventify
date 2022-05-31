@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 /**
  *
  * @param {string} type - "event" | "venue" | "attraction"
- * Card component, based on type param relevant additinal information is rendered
- * @returns card component
+ * @param {string} id - id of the event/venue/attractiion
+ * @param {string} name - name of the event/venue/attractiion
+ * @param {string} location - location of the event/venue/attractiion
+ * @param {string} image - address of the image of the event/venue/attractiion
+ * @param {string} date - date of the event/venue/attractiion
+ * @param {string} segment - segment of the event/venue/attractiion
+ * @param {int} upcoming - number of the upcoming events in the venue
+ * @returns Card component, based on type param relevant additinal information is rendered
  */
 export default function Card({
 	id,

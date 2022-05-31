@@ -1,6 +1,15 @@
 import { useState } from "react";
 import Select from "./Select";
-
+/**
+ *
+ * @param {boolean} required - filter has to be chosen or not
+ * @param {string} icon - icon name
+ * @param {string} title - title of the filter
+ * @param {string[]} - array of strings containing filter options to select
+ * @param {string} selectedOption - current filter selected option
+ * @param {function} setSelectedOption - function to change selectedOption
+ * @returns Filter component with corresponding title, icon,  containing Select component
+ */
 export default function Filter({
 	required = false,
 	icon,

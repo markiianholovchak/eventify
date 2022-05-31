@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-
+/**
+ *
+ * @param {string} color - dark | light
+ * @returns Logo component in dark or light color
+ */
 function Logo({ color }) {
 	return (
 		<Link

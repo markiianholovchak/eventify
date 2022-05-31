@@ -1,6 +1,13 @@
 import { useState, useRef } from "react";
 import useClickOutside from "../hooks/useClickOutside";
-
+/**
+ *
+ * @param {boolean} required - if true, then don't show "None" select option
+ * @param {string[]} - array of strings containing filter options to select
+ * @param {function} handleSelect - function to update the state with the selected value
+ * @param {function} setIsVisible - function to update IsVisible state
+ * @returns Select compontent with relevant select options and ability to change selected option
+ */
 export default function Select({
 	required,
 	options,
