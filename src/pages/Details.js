@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import { APIKEY } from "../globals";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import uniqid from "uniqid";
 
 export default function Details() {
 	const params = useParams();
@@ -13,12 +14,13 @@ export default function Details() {
 		}?apikey=${APIKEY}&locale=*`
 	);
 	return (
-		<div className="flex justify-center my-5 ">
+		<div className=" my-5 ">
 			{isDataLoading && <Loader />}
 			{dataErr && (
 				<Error errorMessage={`Oops... something went wrong: ${dataErr}`} />
 			)}
 			{params.type === "attraction" && data && <Attraction data={data} />}
+			{params.type === "venue" && data && <Venue data={data} />}
 		</div>
 	);
 }
@@ -35,9 +37,8 @@ const Attraction = ({ data }) => {
 			classifications.push(data.classifications[0][key]);
 		}
 	}
-	console.log(data);
 	return (
-		<div className="flex flex-col items-center">
+		<div className="flex flex-col items-center justify-center">
 			<div className="h-[15rem] w-[15rem] rounded-full ">
 				{data.images[0] ? (
 					<img
@@ -73,15 +74,15 @@ const Attraction = ({ data }) => {
 				</span>
 			</p>
 			<ul className="flex justify-center flex-wrap mt-2">
-				{Object.keys(data.externalLinks).map((key, index) => {
+				{Object.keys(data.externalLinks).map((key) => {
 					return (
-						<li key={index} className="mx-2 my-1">
+						<li key={uniqid()} className="mx-2 my-1">
 							<a
 								href={data.externalLinks[key][0].url}
 								target="_blank"
 								rel="noreferrer"
 							>
-								<svg className="fill-[#FE5F55] w-10 h-10">
+								<svg className="fill-tertiary w-10 h-10">
 									<use xlinkHref={`/img/sprite.svg#icon-${key}`} />
 								</svg>
 							</a>
@@ -89,6 +90,71 @@ const Attraction = ({ data }) => {
 					);
 				})}
 			</ul>
+		</div>
+	);
+};
+
+const Venue = ({ data }) => {
+	console.log(data);
+	return (
+		<div>
+			<h2 className="sm:text-2xl text-xl font-bold text-primary mt-5">
+				<a href={data.url} target="_blank" rel="noreferrer">
+					{data.name}
+				</a>
+			</h2>
+			<span className="flex items-center sm:text-xl text-lg text-grey-200">
+				<svg className="fill-grey-200 w-6 h-6 mr-1">
+					<use xlinkHref="/img/sprite.svg#icon-marker"></use>
+				</svg>
+				{`${data.address.line1}, ${data.city.name}, ${data.country.name}`}
+			</span>
+
+			{data.generalInfo && (
+				<>
+					<h3 className="text-xl font-semibold text-dark mt-4">
+						General information
+					</h3>
+					<p className="text-md text-dark font-light">
+						{data.generalInfo.generalRule} <br />
+						{data.generalInfo.childRule}
+					</p>
+				</>
+			)}
+			{data.boxOfficeInfo && (
+				<>
+					<h3 className="text-xl font-semibold text-dark mt-4">Box Office</h3>
+					<p className="text-md text-dark font-light">
+						{data.boxOfficeInfo.openHoursDetail} <br />
+						{data.boxOfficeInfo.willCallDetail}
+					</p>
+					<h3 className="text-xl font-semibold text-dark mt-4">We accept:</h3>
+					<p className="text-md text-dark font-light">
+						{data.boxOfficeInfo.acceptedPaymentDetail}
+					</p>
+				</>
+			)}
+
+			{data.parkingDetail && (
+				<>
+					<h3 className="text-xl font-semibold text-dark mt-4">Parking</h3>
+					<p className="text-md text-dark font-light">{data.parkingDetail}</p>
+				</>
+			)}
+			{data.images && (
+				<div className="flex justify-center mt-5 flex-wrap">
+					{data.images.map((img) => {
+						return (
+							<img
+								key={uniqid()}
+								className="w-[25rem] rounded-xl m-2 "
+								src={img.url}
+								alt={data.name}
+							/>
+						);
+					})}
+				</div>
+			)}
 		</div>
 	);
 };

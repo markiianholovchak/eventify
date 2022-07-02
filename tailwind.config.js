@@ -10,6 +10,7 @@ module.exports = {
 					200: "#B8C0D8",
 				},
 				light: "#ffffff",
+				tertiary: "#FE5F55",
 			},
 			fontFamily: {
 				main: ["Nunito"],
