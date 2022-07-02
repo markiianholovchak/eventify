@@ -6,6 +6,7 @@ import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import Details from "./pages/Details";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/:type" element={<Search />} />
+						<Route path="/:type/:id" element={<Details />} />
 					</Routes>
 				</main>
 				<Footer />

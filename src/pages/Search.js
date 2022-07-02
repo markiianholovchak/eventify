@@ -99,6 +99,7 @@ const DataPage = ({
 						return (
 							<Card
 								key={obj.id}
+								id={obj.id}
 								type={cardType}
 								name={obj.name}
 								location={`${obj._embedded?.venues[0].city.name}, ${
