@@ -19,7 +19,7 @@ module.exports = {
 				concert: "url('../public/img/concert-with-filter.jpeg')",
 			},
 			gridTemplateColumns: {
-				autofit: "repeat(auto-fit, minmax(20rem, 1fr))",
+				autofit: "repeat(auto-fit, minmax(20rem, 0.5fr))",
 			},
 		},
 	},
