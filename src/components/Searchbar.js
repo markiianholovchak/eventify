@@ -43,7 +43,7 @@ export default function Searchbar() {
 			className=" w-full flex flex-col items-center"
 			onSubmit={(e) => handleFormSubmit(e)}
 		>
-			<div className="flex items-center shadow-xl rounded-xl xl:w-[50%] sm:w-[75%] w-[85%] ">
+			<div className="flex items-center shadow-xl rounded-xl xl:w-[50%] sm:w-[75%] w-[100%] ">
 				<input
 					className="flex-1 py-3 px-5 rounded-tl-xl rounded-bl-xl outline-primary text-dark text-md"
 					type="text"
@@ -64,7 +64,7 @@ export default function Searchbar() {
 			<div className="mt-9 flex flex-col items-center">
 				<div
 					className={`grid sm:grid-cols-4 grid-cols-1 gap-2 transition-all duration-300 ${
-						areFiltersVisible ? "" : "opacity-0"
+						areFiltersVisible ? "" : "opacity-0 h-0 overflow-hidden"
 					}`}
 				>
 					<Filter
@@ -97,14 +97,12 @@ export default function Searchbar() {
 						selectOptions={
 							segment ? Object.keys(segments[segment].genres) : null
 						}
-						selectedOption={genre}
+						selectedOption={segment ? genre : null}
 						setSelectedOption={setGenre}
 					/>
 				</div>
 				<div
-					className={`text-grey-200 font-light text-md flex items-center transition-all duration-300 cursor-pointer mt-4  ${
-						areFiltersVisible ? "" : "-translate-y-12"
-					}`}
+					className={`text-grey-200 font-light text-md flex items-center transition-all duration-300 cursor-pointer my-4 `}
 					onClick={handleShowFilters}
 				>
 					{areFiltersVisible ? "Hide" : "Show"} filters

@@ -76,7 +76,6 @@ const DataPage = ({
 			cardType + "s"
 		}?apikey=${APIKEY}&${searchParams}locale=*&page=${pageToLoad}`
 	);
-	console.log(data);
 	useEffect(() => {
 		if (data && data.page.totalPages !== 1 && totalPages === 1) {
 			setTotalPages(data.page.totalPages);
