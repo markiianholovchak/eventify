@@ -1,13 +1,12 @@
 import uniqid from "uniqid";
 import Classifications from "../../components/Classifications";
-import { APIKEY } from "../../globals";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 
 export default function Attraction({ id }) {
 	const [data, isDataLoading, dataErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/attractions/${id}?apikey=${APIKEY}&locale=*`
+		`/api/external/attraction/${id}`
 	);
 	return (
 		<div className="flex flex-col items-center justify-center">

@@ -1,14 +1,11 @@
 import Classifications from "../../components/Classifications";
 import Card from "../../components/Card";
-import { APIKEY } from "../../globals";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 
 export default function Event({ id }) {
-	const [data, isDataLoading, dataErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${APIKEY}&locale=*`
-	);
+	const [data, isDataLoading, dataErr] = useFetch(`/api/external/event/${id}`);
 	return (
 		<div>
 			{isDataLoading && <Loader />}

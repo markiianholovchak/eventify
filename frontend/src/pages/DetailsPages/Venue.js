@@ -1,13 +1,10 @@
 import uniqid from "uniqid";
-import { APIKEY } from "../../globals";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 
 export default function Venue({ id }) {
-	const [data, isDataLoading, dataErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/venues/${id}?apikey=${APIKEY}&locale=*`
-	);
+	const [data, isDataLoading, dataErr] = useFetch(`/api/external/venue/${id}`);
 	return (
 		<div>
 			{isDataLoading && <Loader />}

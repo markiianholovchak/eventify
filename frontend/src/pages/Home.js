@@ -10,13 +10,15 @@ import { APIKEY } from "../globals";
 function Home() {
 	const randomPage = Math.floor(Math.random() * 15);
 	const [events, areEventsLoading, eventsErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/events?apikey=${APIKEY}&locale=*&page=${randomPage}`
+		`/api/external/events/${randomPage}`
 	);
 	const [venues, areVenuesLoading, venuesErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/venues?apikey=${APIKEY}&locale=*&page=${randomPage}`
+		`/api/external/venues/${randomPage}`,
+		randomPage
 	);
 	const [attractions, areAttractionsLoading, attractionsErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/attractions?apikey=${APIKEY}&locale=*&page=${randomPage}`
+		`/api/external/attractions/${randomPage}`,
+		randomPage
 	);
 
 	return (

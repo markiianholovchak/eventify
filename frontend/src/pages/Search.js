@@ -3,14 +3,10 @@ import { useParams } from "react-router-dom";
 import useCustomSearchParams from "../hooks/useCustomSearchParams";
 import useFetch from "../hooks/useFetch";
 
-import uniqid from "uniqid";
-
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 import Button from "../components/Button";
 import Error from "../components/Error";
-
-import { APIKEY } from "../globals";
 
 export default function ExploreMore() {
 	const [pages, setPages] = useState([0]);
@@ -36,11 +32,11 @@ export default function ExploreMore() {
 					: `Explore ${params.type}`}
 			</h2>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
-				{pages.map((page) => (
+				{pages.map((page, index) => (
 					<DataPage
 						pageToLoad={page}
 						cardType={cardType}
-						key={uniqid()}
+						key={index}
 						searchParams={querySearchParams}
 						totalPages={totalPages}
 						setTotalPages={setTotalPages}
@@ -72,9 +68,7 @@ const DataPage = ({
 	setTotalPages,
 }) => {
 	const [data, isDataLoading, dataErr] = useFetch(
-		`https://app.ticketmaster.com/discovery/v2/${
-			cardType + "s"
-		}?apikey=${APIKEY}&${searchParams}locale=*&page=${pageToLoad}`
+		`/api/external/${cardType + "s"}/${pageToLoad}/?q=${searchParams}`
 	);
 	useEffect(() => {
 		if (data && data.page.totalPages !== 1 && totalPages === 1) {
