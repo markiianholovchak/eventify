@@ -68,7 +68,7 @@ export default function Card({
 
 					<Link
 						className="text-sm text-primary bg-grey-100 px-3 py-1 rounded-2xl self-end justify-self-end hover:scale-110 active:scale-95 transition-all duration-200"
-						to={`/${type}/${id}`}
+						to={`/explore/${type}/${id}`}
 					>
 						Learn more
 					</Link>

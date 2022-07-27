@@ -33,7 +33,7 @@ export default function Searchbar() {
 			);
 		}, "");
 		// Redirect to search page with the query
-		navigate(`/${type.toLowerCase()}/?${queryStr}`);
+		navigate(`/explore/${type.toLowerCase()}/?${queryStr}`);
 	};
 	const handleShowFilters = () => {
 		setAreFiltersVisible(!areFiltersVisible);
