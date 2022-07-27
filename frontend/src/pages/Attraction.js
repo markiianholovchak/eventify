@@ -1,12 +1,15 @@
-import uniqid from "uniqid";
-import Classifications from "../../components/Classifications";
-import useFetch from "../../hooks/useFetch";
-import Loader from "../../components/Loader";
-import Error from "../../components/Error";
+import { useParams } from "react-router-dom";
 
-export default function Attraction({ id }) {
+import uniqid from "uniqid";
+import Classifications from "../components/Classifications";
+import useFetch from "../hooks/useFetch";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
+
+export default function Attraction() {
+	const params = useParams();
 	const [data, isDataLoading, dataErr] = useFetch(
-		`/api/external/attraction/${id}`
+		`/api/external/attraction/${params.id}`
 	);
 	return (
 		<div className="flex flex-col items-center justify-center">

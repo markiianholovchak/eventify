@@ -24,7 +24,7 @@ export default function Login() {
 						placeholder="Password"
 						className="border-2 border-dark rounded-sm px-2 py-2 w-[20rem] mt-4 mb-2"
 					/>
-					<CustomButton type="primary" text="Log in" />
+					<CustomButton type="primary" text="Sign up" />
 				</form>
 				<p className="text-dark text-lg mt-4 ">
 					Don't have an account yet?{" "}

@@ -1,11 +1,16 @@
-import Classifications from "../../components/Classifications";
-import Card from "../../components/Card";
-import useFetch from "../../hooks/useFetch";
-import Loader from "../../components/Loader";
-import Error from "../../components/Error";
+import { useParams } from "react-router-dom";
+
+import Classifications from "../components/Classifications";
+import Card from "../components/Card";
+import useFetch from "../hooks/useFetch";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 export default function Event({ id }) {
-	const [data, isDataLoading, dataErr] = useFetch(`/api/external/event/${id}`);
+	const params = useParams();
+	const [data, isDataLoading, dataErr] = useFetch(
+		`/api/external/event/${[params.id]}`
+	);
 	return (
 		<div>
 			{isDataLoading && <Loader />}

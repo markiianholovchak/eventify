@@ -4,9 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 import Main from "./Main";
 import Search from "./Search";
-import Details from "./Details";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Event from "./Event";
+import Attraction from "./Attraction";
+import Venue from "./Venue";
 
 export default function Home() {
 	return (
@@ -19,7 +21,9 @@ export default function Home() {
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/:type" element={<Search />} />
-					<Route path="/:type/:id" element={<Details />} />
+					<Route path="/event/:id" element={<Event />} />
+					<Route path="/venue/:id" element={<Venue />} />
+					<Route path="/attraction/:id" element={<Attraction />} />
 				</Routes>
 				<Footer />
 			</main>

@@ -1,10 +1,15 @@
+import { useParams } from "react-router-dom";
+
 import uniqid from "uniqid";
-import useFetch from "../../hooks/useFetch";
-import Loader from "../../components/Loader";
-import Error from "../../components/Error";
+import useFetch from "../hooks/useFetch";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 export default function Venue({ id }) {
-	const [data, isDataLoading, dataErr] = useFetch(`/api/external/venue/${id}`);
+	const params = useParams();
+	const [data, isDataLoading, dataErr] = useFetch(
+		`/api/external/venue/${params.id}`
+	);
 	return (
 		<div>
 			{isDataLoading && <Loader />}
