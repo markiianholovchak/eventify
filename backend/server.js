@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 // Routes
 
 app.use("/api/external", externalsRoutes);
-app.use("/api/users", usersRoutes);
+app.use("/api/user", usersRoutes);
 
 // connect to db
 mongoose

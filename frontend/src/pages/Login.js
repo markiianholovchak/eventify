@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
-import CustomButton from "../components/CusomButton";
+import CustomButton from "../components/CustomButton";
 import Footer from "../components/Footer";
 
 export default function Login() {
