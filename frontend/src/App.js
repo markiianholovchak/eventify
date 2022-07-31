@@ -8,6 +8,7 @@ import useAuthContext from "./hooks/useAuthContext";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Saved from "./pages/Saved";
 import Signup from "./pages/Signup";
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
 				<Route
 					path="/signup"
 					element={!user ? <Signup /> : <Navigate to="/explore" />}
+				/>
+				<Route
+					path="/saved"
+					element={user ? <Saved /> : <Navigate to="/login" />}
 				/>
 			</Routes>
 		</Router>

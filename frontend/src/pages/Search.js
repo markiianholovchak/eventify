@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useCustomSearchParams from "../hooks/useCustomSearchParams";
 import useFetch from "../hooks/useFetch";
+import uniqid from "uniqid";
 
 import Card from "../components/Card";
 import Loader from "../components/Loader";
-import Button from "../components/Button";
 import Error from "../components/Error";
+import CustomButton from "../components/CustomButton";
 
 export default function ExploreMore() {
-	const [pages, setPages] = useState([0]);
+	const [pages, setPages] = useState([{ page: 0, id: uniqid() }]);
 	const [totalPages, setTotalPages] = useState(1);
 	const [searchParams] = useCustomSearchParams();
 	const params = useParams();
@@ -21,9 +22,17 @@ export default function ExploreMore() {
 	const cardType = params.type.slice(0, -1);
 	const handleLoadPage = (e) => {
 		e.preventDefault();
-		setPages([...pages, pages[pages.length - 1] + 1]);
+		setPages([
+			...pages,
+			{ page: pages[pages.length - 1].page + 1, id: uniqid() },
+		]);
 	};
-
+	useEffect(() => {
+		return () => {
+			setPages([{ page: 0, id: uniqid() }]);
+			setTotalPages(1);
+		};
+	}, [querySearchParams]);
 	return (
 		<div className="">
 			<h2 className="sm:text-2xl text-xl font-semibold text-dark flex items-center">
@@ -32,11 +41,11 @@ export default function ExploreMore() {
 					: `Explore ${params.type}`}
 			</h2>
 			<div className="grid grid-cols-autofit justify-items-center justify-center sm:justify-start  gap-5 mt-2 mb-10">
-				{pages.map((page, index) => (
+				{pages.map(({ page, id }, index) => (
 					<DataPage
 						pageToLoad={page}
 						cardType={cardType}
-						key={index}
+						key={id}
 						searchParams={querySearchParams}
 						totalPages={totalPages}
 						setTotalPages={setTotalPages}
@@ -44,8 +53,8 @@ export default function ExploreMore() {
 				))}
 			</div>
 			<div className="flex justify-center">
-				{totalPages > pages[pages.length - 1] && (
-					<Button
+				{totalPages > pages[pages.length - 1].page && (
+					<CustomButton
 						type="secondary"
 						text="Load more"
 						onClick={(e) => {

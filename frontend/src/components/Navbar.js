@@ -2,7 +2,7 @@ import useAuthContext from "../hooks/useAuthContext";
 import useLogout from "../hooks/useLogout";
 
 import CustomButton from "./CustomButton";
-import Button from "./Button";
+import Button from "./CustomLink";
 import Logo from "./Logo";
 
 export default function Navbar() {
