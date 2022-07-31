@@ -9,7 +9,7 @@ import axios from "axios";
  *          error: null if no error, otherwise error message
  */
 
-export default function useFetch(url, page) {
+export default function useFetch(url, config = {}) {
 	const [data, setData] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -17,8 +17,12 @@ export default function useFetch(url, page) {
 		setIsLoading(true);
 		const fetchData = async () => {
 			try {
-				const resp = await axios.get(url);
-				setData(resp.data.data);
+				const resp = await axios.get(url, config);
+				if (resp.data.data) {
+					setData(resp.data.data);
+				} else {
+					setData(resp.data);
+				}
 			} catch (err) {
 				setError(err.message);
 			} finally {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useSignup from "../hooks/useSignup";
 
 // components
@@ -12,15 +12,10 @@ export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { signup, isLoading, error } = useSignup();
-	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Hit");
 		await signup(email, password);
-		if (!error) {
-			navigate("/");
-		}
 	};
 	return (
 		<div className="min-h-[100vh] flex flex-col justify-between">

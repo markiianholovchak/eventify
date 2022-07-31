@@ -11,7 +11,16 @@ export default function useLogin() {
 	const login = async (email, password) => {
 		setError(null);
 		setIsLoading(true);
-		const response = await axios.post("/api/user/login", { email, password });
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		};
+		const data = {
+			email,
+			password,
+		};
+		const response = await axios.post("/api/user/login", data, config);
 		if (response.status !== 200) {
 			setIsLoading(false);
 		}

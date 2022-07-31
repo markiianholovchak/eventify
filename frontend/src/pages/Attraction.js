@@ -5,6 +5,7 @@ import Classifications from "../components/Classifications";
 import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import SaveButton from "../components/SaveButton";
 
 export default function Attraction() {
 	const params = useParams();
@@ -12,7 +13,7 @@ export default function Attraction() {
 		`/api/external/attraction/${params.id}`
 	);
 	return (
-		<div className="flex flex-col items-center justify-center">
+		<div className="flex flex-col items-center justify-center mb-4">
 			{isDataLoading && <Loader />}
 			{dataErr && (
 				<Error errorMessage={`Oops... something went wrong: ${dataErr}`} />
@@ -59,6 +60,18 @@ export default function Attraction() {
 							);
 						})}
 					</ul>
+					<div className="my-4">
+						<SaveButton
+							item={{
+								id: data.id,
+								type: "attraction",
+								name: data.name,
+								image: data.images?.[0]?.url,
+								upcoming: data.upcomingEvents._total,
+								segment: `${data.classifications[0].segment.name}, ${data.classifications[0].genre?.name}`,
+							}}
+						/>
+					</div>
 				</>
 			)}
 		</div>

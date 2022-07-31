@@ -10,7 +10,16 @@ export default function useSignup() {
 	const signup = async (email, password) => {
 		setError(null);
 		setIsLoading(true);
-		const response = await axios.post("/api/user/signup", { email, password });
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		};
+		const data = {
+			email,
+			password,
+		};
+		const response = await axios.post("/api/user/signup", data, config);
 		if (response.status !== 200) {
 			setIsLoading(false);
 		}

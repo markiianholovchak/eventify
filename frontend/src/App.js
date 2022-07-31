@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 
 function App() {
 	const { user } = useAuthContext();
+	console.log(user);
 	return (
 		<Router>
 			<Routes>
@@ -26,10 +27,11 @@ function App() {
 					path="/signup"
 					element={!user ? <Signup /> : <Navigate to="/explore" />}
 				/>
-				<Route
+				{/* <Route
 					path="/saved"
 					element={user ? <Saved /> : <Navigate to="/login" />}
-				/>
+				/> */}
+				<Route path="/saved" element={user && <Saved />} />
 			</Routes>
 		</Router>
 	);

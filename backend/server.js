@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const externalsRoutes = require("./routes/externals");
 const usersRoutes = require("./routes/users");
+const savedRoutes = require("./routes/saved");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use("/api/external", externalsRoutes);
 app.use("/api/user", usersRoutes);
+app.use("/api/saved", savedRoutes);
 
 // connect to db
 mongoose
