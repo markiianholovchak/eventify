@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import useAuthContext from "../hooks/useAuthContext";
+import useSavedContext from "../hooks/useSavedContext";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,12 +11,18 @@ import Card from "../components/Card";
 
 export default function Saved() {
 	const { user } = useAuthContext();
+	const { dispatch } = useSavedContext();
 	const [data, isLoading, error] = useFetch("/api/saved", {
 		headers: {
 			Authorization: `Bearer: ${user.token}`,
 		},
 	});
-	console.log(data);
+	useEffect(() => {
+		if (data) {
+			dispatch({ type: "SET_ITEMS", payload: data.savedItems });
+		}
+	}, [data]);
+
 	return (
 		<div className="min-h-[100vh] flex flex-col ">
 			<header className="sm:px-10 px-4 py-4">

@@ -1,5 +1,9 @@
 const express = require("express");
-const { getItems, saveItem } = require("../controllers/savedController");
+const {
+	getItems,
+	saveItem,
+	deleteItem,
+} = require("../controllers/savedController");
 const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
@@ -11,5 +15,7 @@ router.use(requireAuth);
 router.get("/", getItems);
 // Save item to db
 router.post("/", saveItem);
+// Delete item fron db
+router.delete("/:id", deleteItem);
 
 module.exports = router;
