@@ -14,7 +14,6 @@ export default function Login() {
 	const { login, isLoading, error } = useLogin();
 
 	const handleSubmit = async (e) => {
-		console.log("Fired");
 		e.preventDefault();
 		await login(email, password);
 	};
@@ -44,8 +43,8 @@ export default function Login() {
 					{error && <Error errorMessage={error} />}
 				</form>
 				<p className="text-dark text-lg mt-4 ">
-					Don't have an account yet?{" "}
-					<Link to="/signup" className="text-primary font-bold">
+					Don't have an account yet?
+					<Link to="/signup" className="ml-2 text-primary font-bold">
 						Sign up
 					</Link>
 				</p>

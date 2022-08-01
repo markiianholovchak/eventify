@@ -48,7 +48,7 @@ export default function Login() {
 				</form>
 				<p className="text-dark text-lg mt-4 ">
 					Already have an account?
-					<Link to="/login" className="text-primary font-bold">
+					<Link to="/login" className="ml-2 text-primary font-bold">
 						Log in
 					</Link>
 				</p>

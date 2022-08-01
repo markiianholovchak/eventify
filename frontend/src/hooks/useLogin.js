@@ -15,6 +15,7 @@ export default function useLogin() {
 			headers: {
 				"Content-Type": "application/json",
 			},
+			validateStatus: null,
 		};
 		const data = {
 			email,
@@ -22,11 +23,13 @@ export default function useLogin() {
 		};
 		const response = await axios.post("/api/user/login", data, config);
 		if (response.status !== 200) {
+			setError(response.data.error);
 			setIsLoading(false);
 		}
 		if (response.status === 200) {
 			// Save user to local storage
 			localStorage.setItem("user", JSON.stringify(response.data));
+			setError(null);
 			setIsLoading(false);
 
 			dispatch({ type: "LOGIN", payload: response.data });

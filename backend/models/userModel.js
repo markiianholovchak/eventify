@@ -24,6 +24,9 @@ userSchema.statics.login = async function (email, password) {
 	if (!password) {
 		throw Error("Password is required");
 	}
+	if (!validator.isEmail(email)) {
+		throw Error("Invalid email");
+	}
 	const user = await this.findOne({ email });
 	if (user) {
 		const auth = await bcrypt.compare(password, user.password);
@@ -33,7 +36,7 @@ userSchema.statics.login = async function (email, password) {
 			throw Error("Incorrect password");
 		}
 	} else {
-		throw Error("Incorrect email");
+		throw Error("Account does not exist");
 	}
 };
 
