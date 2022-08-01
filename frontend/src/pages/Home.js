@@ -25,8 +25,8 @@ export default function Home() {
 					<Route path="/venue/:id" element={<Venue />} />
 					<Route path="/attraction/:id" element={<Attraction />} />
 				</Routes>
-				<Footer />
 			</main>
+			<Footer />
 		</>
 	);
 }

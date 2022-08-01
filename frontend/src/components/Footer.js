@@ -4,7 +4,7 @@ import useAuthContext from "../hooks/useAuthContext";
 export default function Footer() {
 	const { user } = useAuthContext();
 	return (
-		<footer className="sm:px-5 px-2 mb-4 font-main">
+		<footer className="sm:px-10 px-5 mb-4 font-main">
 			<div className="flex justify-between items-center border-b-2 border-b-gray-200 pb-1 sm:px-5 px-2">
 				<Logo color="dark" />
 				{!user && (
