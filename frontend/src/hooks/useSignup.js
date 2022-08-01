@@ -26,9 +26,9 @@ export default function useSignup() {
 		if (response.status === 200) {
 			// Save user to local storage
 			localStorage.setItem("user", JSON.stringify(response.data));
-			dispatch({ type: "LOGIN", payload: response.data });
 
 			setIsLoading(false);
+			dispatch({ type: "LOGIN", payload: response.data });
 		}
 	};
 	return { signup, isLoading, error };

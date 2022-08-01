@@ -22,11 +22,13 @@ export default function useSave() {
 		});
 		if (response.status !== 200) {
 			setIsLoading(false);
+			setError(response.data);
 		}
 		if (response.status === 200) {
 			// save item to context
 			dispatch({ type: "SAVE_ITEM", payload: response.data.savedItem });
 
+			setError(null);
 			setIsLoading(false);
 		}
 	};

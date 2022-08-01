@@ -5,7 +5,7 @@ import useDelete from "../hooks/useDelete";
 export default function SaveButton({ item }) {
 	const { user } = useAuthContext();
 	const { savedItems } = useSavedContext();
-	const { save } = useSave();
+	const { save, error } = useSave();
 	const { del } = useDelete();
 	const handleSave = async (e) => {
 		e.preventDefault();
