@@ -15,10 +15,12 @@ export default function ExploreMore() {
 	const [searchParams] = useCustomSearchParams();
 	const params = useParams();
 
+	// Create query string
 	const querySearchParams = Object.keys(searchParams).reduce(
 		(acc, el) => (acc += `${el}=${searchParams[el]}&`),
 		""
 	);
+
 	const cardType = params.type.slice(0, -1);
 	const handleLoadPage = (e) => {
 		e.preventDefault();
@@ -27,7 +29,9 @@ export default function ExploreMore() {
 			{ page: pages[pages.length - 1].page + 1, id: uniqid() },
 		]);
 	};
+
 	useEffect(() => {
+		// Clean up  the state whenever the search parameters change
 		return () => {
 			setPages([{ page: 0, id: uniqid() }]);
 			setTotalPages(1);
@@ -53,7 +57,7 @@ export default function ExploreMore() {
 				))}
 			</div>
 			<div className="flex justify-center">
-				{totalPages > pages[pages.length - 1].page && (
+				{totalPages > pages.length && (
 					<CustomButton
 						type="secondary"
 						text="Load more"
@@ -79,8 +83,10 @@ const DataPage = ({
 	const [data, isDataLoading, dataErr] = useFetch(
 		`/api/external/${cardType + "s"}/${pageToLoad}/?q=${searchParams}`
 	);
+
 	useEffect(() => {
-		if (data && data.page.totalPages !== 1 && totalPages === 1) {
+		// Set total pages number if data provides a different number
+		if (data && data.page.totalPages !== totalPages) {
 			setTotalPages(data.page.totalPages);
 		}
 	}, [data]);

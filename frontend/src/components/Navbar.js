@@ -54,12 +54,12 @@ export default function Navbar({ color = "light" }) {
 								Home
 							</Link>
 						</li>
-						<li className="sm:mr-8 flex flex-col items-center hover:text-primary transition-all duration-100 cursor-pointer sm:mb-0 mb-2">
+						{/* <li className="sm:mr-8 flex flex-col items-center hover:text-primary transition-all duration-100 cursor-pointer sm:mb-0 mb-2">
 							<svg className={`h-6 w-6 fill-current`}>
 								<use xlinkHref="/img/sprite.svg#icon-profile"></use>
 							</svg>
 							Profile
-						</li>
+						</li> */}
 						<li className="sm:mr-8 sm:mb-0 mb-2">
 							<Link
 								to={"/saved"}
