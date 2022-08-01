@@ -16,7 +16,7 @@ module.exports = {
 				main: ["Nunito"],
 			},
 			backgroundImage: {
-				concert: "url('../public/img/concert-with-filter.jpeg')",
+				concert: "url('../public/img/concert-with-filter.avif')",
 			},
 			gridTemplateColumns: {
 				autofit: "repeat(auto-fit, 20rem)",

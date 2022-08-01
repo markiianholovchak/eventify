@@ -14,6 +14,7 @@ export default function Login() {
 	const { login, isLoading, error } = useLogin();
 
 	const handleSubmit = async (e) => {
+		console.log("Fired");
 		e.preventDefault();
 		await login(email, password);
 	};

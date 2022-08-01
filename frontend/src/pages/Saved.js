@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Card from "../components/Card";
+import CustomLink from "../components/CustomLink";
 
 export default function Saved() {
 	const { user } = useAuthContext();
@@ -33,8 +34,17 @@ export default function Saved() {
 				{error && (
 					<Error errorMessage={`Oops... something went wrong: ${error}`} />
 				)}
-				{data && (
+				{data && data.savedItems.length < 1 && (
+					<div className="flex flex-col items-center">
+						<h1 className="mb-4 sm:text-2xl text-xl font-semibold text-grey-200 flex items-center">
+							Seems like you havent saved anything yet...
+						</h1>
+						<CustomLink type="secondary" text="Explore" url="/" />
+					</div>
+				)}
+				{data && data.savedItems.length > 1 && (
 					<>
+						{console.log(data)}
 						<h2 className="sm:text-2xl text-xl font-semibold text-dark flex items-center">
 							Saved events
 						</h2>

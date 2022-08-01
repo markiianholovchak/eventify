@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Button({ type, text, url = "/" }) {
+export default function CustomLink({ type, text, url = "/" }) {
 	const primaryButtonStyles = "text-light bg-primary";
 	const secondaryButtonStyles =
 		"text-primary  hover:text-light hover:bg-primary ";
