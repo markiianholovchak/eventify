@@ -30,7 +30,6 @@ function App() {
 					path="/saved"
 					element={user ? <Saved /> : <Navigate to="/login" />}
 				/>
-				{/* <Route path="/saved" element={user && <Saved />} /> */}
 			</Routes>
 		</Router>
 	);
