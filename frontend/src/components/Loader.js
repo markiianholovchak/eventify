@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ *
+ * @returns custom loader
+ */
 export default function Loader() {
 	return (
 		<div>

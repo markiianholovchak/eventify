@@ -6,6 +6,11 @@ import useLogout from "../hooks/useLogout";
 import Button from "./CustomLink";
 import Logo from "./Logo";
 
+/**
+ *
+ * @param {String} color - light | dark
+ * @returns responsive navbar
+ */
 export default function Navbar({ color = "light" }) {
 	const [isVisible, setIsVisible] = useState(false);
 	const { user } = useAuthContext();

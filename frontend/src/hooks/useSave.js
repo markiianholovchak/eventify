@@ -4,6 +4,11 @@ import useSavedContext from "./useSavedContext";
 
 import axios from "axios";
 
+/**
+ * Custom hook to save item to db
+ * @returns function save that accepts item object to be saved in db, sends request to save item to db, updates saved items context
+ *  isLoading boolean and error if one occurs
+ */
 export default function useSave() {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);

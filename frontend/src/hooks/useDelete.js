@@ -6,7 +6,8 @@ import axios from "axios";
 
 /**
  * Custom hook to delete item fron saved items in db
- * @returns function del that accepts item's id as a parameter, isLoading boolean and error if one occurs
+ * @returns function del that accepts item's id as a parameter, sends request to delete item to db, updates saved items context
+ *  isLoading boolean and error if one occurs
  */
 export default function useDelete() {
 	const [error, setError] = useState(null);

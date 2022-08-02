@@ -1,3 +1,11 @@
+/**
+ *
+ * @param {String} type - primary | secondary
+ * @param {String} text - Text to be displayed
+ * @param {boolean} isDisabled - true | false - disables button while pending request
+ * @param {function} onClick - function to be executed on button click
+ * @returns <button> element styled accordingly to type provided
+ */
 export default function CustomButton({ type, text, isDisabled, onClick }) {
 	const primaryButtonStyles = "text-light bg-primary";
 	const secondaryButtonStyles =

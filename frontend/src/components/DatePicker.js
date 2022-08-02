@@ -1,6 +1,13 @@
 import { useRef, useState } from "react";
 import useClickOutside from "../hooks/useClickOutside";
 
+/**
+ *
+ * @param {function} setIsVisible - function to update isVisible state
+ * @param {function} handleSelect - function to select the date
+ * @param {String} selectedOption - string containing selected date
+ * @returns custom datepicker
+ */
 export default function DatePicker({
 	setIsVisible,
 	handleSelect,

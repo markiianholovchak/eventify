@@ -1,8 +1,13 @@
 import React from "react";
 
+/**
+ *
+ * @param {object} classificationObj - object containg classifications obtained from external API
+ * @returns Classifications component containing list of extracted classifications from classificationsObj
+ */
 export default function Classifications({ classificationsObj }) {
 	const classifications = [];
-
+	// Extract classifications from classificationsObj
 	for (let key of Object.keys(classificationsObj[0])) {
 		if (
 			typeof classificationsObj[0][key] === "object" &&

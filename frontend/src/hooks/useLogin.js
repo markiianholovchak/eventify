@@ -3,6 +3,11 @@ import useAuthContext from "./useAuthContext";
 
 import axios from "axios";
 
+/**
+ * Custom hook to log in user
+ * @returns function login that accepts email and password as parameters, sends request to log in to backend, updates auth context
+ * isLoading boolean and error if one occurs
+ */
 export default function useLogin() {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);

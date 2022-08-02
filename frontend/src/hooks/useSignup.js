@@ -2,6 +2,12 @@ import { useState } from "react";
 import useAuthContext from "./useAuthContext";
 
 import axios from "axios";
+
+/**
+ * Custom hook to sign up user
+ * @returns function signup that accepts email and password as parameters, sends request to sign up to backend, updates auth context
+ * isLoading boolean and error if one occurs
+ */
 export default function useSignup() {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);

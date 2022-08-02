@@ -1,12 +1,15 @@
-import { useState } from "react";
 import useAuthContext from "../hooks/useAuthContext";
 import useSavedContext from "../hooks/useSavedContext";
 import useSave from "../hooks/useSave";
 import useDelete from "../hooks/useDelete";
 import Error from "./Error";
 
+/**
+ *
+ * @param {Object} item - item object to be savedc
+ * @returns button that saves or deletes passed item from db when clicked
+ */
 export default function SaveButton({ item }) {
-	const [userError, setUserError] = useState(null);
 	const { user } = useAuthContext();
 	const { savedItems } = useSavedContext();
 	const { save, error: saveError } = useSave();
