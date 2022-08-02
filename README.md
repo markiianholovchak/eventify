@@ -84,3 +84,7 @@ cd ..
 cd backend /
 nodemon server
 ```
+
+## License
+
+Eventify is [MIT-Licensed](https://github.com/markiianholovchak/eventify/blob/main/LICENSE.md)
