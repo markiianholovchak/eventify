@@ -44,21 +44,23 @@ export default function Attraction() {
 						</span>
 					</p>
 					<ul className="flex justify-center flex-wrap mt-2">
-						{Object.keys(data.externalLinks).map((key) => {
-							return (
-								<li key={uniqid()} className="mx-2 my-1">
-									<a
-										href={data.externalLinks[key][0].url}
-										target="_blank"
-										rel="noreferrer"
-									>
-										<svg className="fill-tertiary w-10 h-10">
-											<use xlinkHref={`/img/sprite.svg#icon-${key}`} />
-										</svg>
-									</a>
-								</li>
-							);
-						})}
+						{Object.keys(data.externalLinks)
+							.filter((key) => key !== "musicbrainz")
+							.map((key) => {
+								return (
+									<li key={uniqid()} className="mx-2 my-1">
+										<a
+											href={data.externalLinks[key][0].url}
+											target="_blank"
+											rel="noreferrer"
+										>
+											<svg className="fill-tertiary w-10 h-10">
+												<use xlinkHref={`/img/sprite.svg#icon-${key}`} />
+											</svg>
+										</a>
+									</li>
+								);
+							})}
 					</ul>
 					<div className="my-4">
 						<SaveButton

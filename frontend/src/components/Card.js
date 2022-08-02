@@ -33,7 +33,10 @@ export default function Card({
 						alt={`${name} ${type}`}
 					/>
 				) : (
-					<span className="text-primary text-lg font-semibold">
+					<span className="text-tertiary text-lg font-semibold flex flex-col items-center">
+						<svg className="h-8 w-8 fill-current mr-1 mb-2">
+							<use xlinkHref={`/img/sprite.svg#icon-emoji-sad`} />
+						</svg>
 						No photo for this {type}...
 					</span>
 				)}
